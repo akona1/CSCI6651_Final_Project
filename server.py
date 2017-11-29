@@ -3,6 +3,7 @@
 import socket
 from threading import Thread
 # Added import ThreadingMixIn as we wanted to allow multiple users to hit server in one go
+# i.e. multithreaded:
 from socketserver import ThreadingMixIn
 
 # TCP_IP = 'localhost' i.e "172.19.72.81"
@@ -27,14 +28,15 @@ class ClientThread(Thread):
         print("New thread started for "+ip+":"+str(port))
 
     def run(self):
-        #filename='mytext.txt'
+        # define file name and location
+        # note this file is created by 
         filename='/var/tmp/ip.db'
+        # open the file in binary mode
         f = open(filename,'rb')
         while True:
             l = f.read(BUFFER_SIZE)
             while (l):
                 self.sock.send(l)
-                #print('Sent ',repr(l))
                 l = f.read(BUFFER_SIZE)
             if not l:
                 f.close()
