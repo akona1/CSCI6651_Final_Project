@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# connects to server.py and transfers the file to file.txt
+# connects to server.py and transfers the IP database to /var/tmp/ip.db
 
 import socket
 import time
@@ -19,7 +19,7 @@ s.connect((TCP_IP, TCP_PORT))
 clock_start = time.clock()
 time_start = time.time()
 # opening the retrived file from the server.py which contains data
-with open('file.txt', 'wb') as f:
+with open('/var/tmp/ip.db', 'wb') as f:
     print('file opened')
     # open file Success? go further
     while True:
