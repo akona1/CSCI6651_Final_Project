@@ -50,7 +50,7 @@ tcpsock.bind((TCP_IP, TCP_PORT))
 threads = []
 
 while True:
-    # 
+    # listen on the IP:Port and allow as many as 5 connections before refusing new connections
     tcpsock.listen(5)
     print("Waiting for incoming connections...")
     (conn, (ip,port)) = tcpsock.accept()
