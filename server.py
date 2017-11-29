@@ -28,8 +28,8 @@ class ClientThread(Thread):
         print("New thread started for "+ip+":"+str(port))
 
     def run(self):
-        # define file name and location
-        # note this file is created by 
+        # define filename/location
+        # note this file is created by /usr/local/sbin/update_db.py on the HoneyPot
         filename='/var/tmp/ip.db'
         # open the file in binary mode
         f = open(filename,'rb')
@@ -42,13 +42,15 @@ class ClientThread(Thread):
                 f.close()
                 self.sock.close()
                 break
-
+                
+# create a socket and call it tcpsock
 tcpsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 tcpsock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 tcpsock.bind((TCP_IP, TCP_PORT))
 threads = []
 
 while True:
+    # 
     tcpsock.listen(5)
     print("Waiting for incoming connections...")
     (conn, (ip,port)) = tcpsock.accept()
