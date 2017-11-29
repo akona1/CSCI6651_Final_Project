@@ -2,9 +2,10 @@
 
 import socket
 from threading import Thread
+# Added import ThreadingMixIn as we wanted to allow multiple users to hit server in one go
 from socketserver import ThreadingMixIn
 
-# TCP_IP = 'localhost'
+# TCP_IP = 'localhost' i.e "172.19.72.81"
 TCP_IP = socket.gethostbyaddr("172.19.72.81")[0]
 TCP_PORT = 55555
 BUFFER_SIZE = 1024
@@ -12,8 +13,9 @@ BUFFER_SIZE = 1024
 print('TCP_IP=',TCP_IP)
 print('TCP_PORT=',TCP_PORT)
 
+# declaring a class which takes a thread as input 
 class ClientThread(Thread):
-
+# defining a constructor for thread
     def __init__(self,ip,port,sock):
         Thread.__init__(self)
         self.ip = ip
