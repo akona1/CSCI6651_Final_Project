@@ -6,7 +6,10 @@ from threading import Thread
 from socketserver import ThreadingMixIn
 
 # TCP_IP = 'localhost' i.e "172.19.72.81"
-TCP_IP = socket.gethostbyaddr("172.19.72.81")[0]
+# TCP_IP = socket.gethostbyaddr("172.19.72.81")[0]
+#
+# Digital Ocean IP
+TCP_IP = '67.205.131.5'
 TCP_PORT = 55555
 BUFFER_SIZE = 1024
 
@@ -24,7 +27,8 @@ class ClientThread(Thread):
         print("New thread started for "+ip+":"+str(port))
 
     def run(self):
-        filename='mytext.txt'
+        #filename='mytext.txt'
+        filename='/var/tmp/ip.db'
         f = open(filename,'rb')
         while True:
             l = f.read(BUFFER_SIZE)
