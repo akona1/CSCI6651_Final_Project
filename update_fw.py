@@ -10,7 +10,7 @@ db = sqlite3.connect(mydb)
 c = db.execute('select ip from Hostile')
 for row in c:
     ip = c.fetchone()	# returns a tuple
-    # create the command that will be executed from a shell
+    # create the ipset command that will be executed (once per IP)
     # note the --quiet option sends stdout to /dev/null
     blockip = "ipset -quiet add blacklist " + ip[0]
     # execute the command from a shell
