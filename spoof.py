@@ -1,4 +1,11 @@
 #!/usr/bin/python
+
+# Note: this program successfully generated spoofed packets which arrived at the
+# HoneyPot. However, it appears the Linux IP stack is sophisticated enough to know
+# that the IP's are spoofed and silently ignored them. Firewalld never even blocks them.
+# We found 3 sppofing Python programs on the internet, none of them worked but between
+# the 3 of them we were able to craft the script below.
+
 import time, os, sys, string, thread, socket
 from impacket import ImpactDecoder, ImpactPacket ##Using custom Python library to help with IP Spoofing
 from scapy.all import *
