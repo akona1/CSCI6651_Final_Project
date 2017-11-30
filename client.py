@@ -15,10 +15,10 @@ BUFFER_SIZE = 1024
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # connecting to the TCP_IP '67.205.131.5' at port 55555
 s.connect((TCP_IP, TCP_PORT))
-# clock starts here and calculates time lasp till it ends
+# define variables used to calculate file transfer time
 clock_start = time.clock()
 time_start = time.time()
-# opening the retrived file from the server.py which contains data
+# opening file where we will write the data (binary mode SQLite DB file)
 with open('/var/tmp/ip.db', 'wb') as f:
     print('file opened')
     # open file Success? go further
@@ -34,7 +34,7 @@ with open('/var/tmp/ip.db', 'wb') as f:
         # write data to a file
         f.write(data)
 
-print('Successfully get the file')
+print('File transfer successful')
 
 # closing a socket
 s.close()
