@@ -3,6 +3,7 @@
 # $Id: get_ips.sh,v 1.2 2017/11/27 02:58:24 root Exp root $
 # Purpose: Parses firewall denials in /var/log/messages and writes
 #          output a text file which is read by update_db.py .
+#          This program runs out of the HoneyPot's crontab
 ###################################################################
 # tmp file 
 TMPFL="/tmp/hostile_ips.txt"
